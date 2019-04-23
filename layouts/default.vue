@@ -1,63 +1,102 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+  <!-- 应用 -->
+  <v-app>
+    <!-- 导航栏 -->
+    <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
-          </v-list-tile-content>
+        <!-- 主页 -->
+        <v-list-tile to="/" router exact>
+          <v-list-tile-action><v-icon>home</v-icon></v-list-tile-action>
+          <v-list-tile-title>主页</v-list-tile-title>
         </v-list-tile>
+        <!-- group 统计分析 -->
+        <v-list-group prepend-icon="assignment" no-action>
+          <template v-slot:activator>
+            <v-list-tile>
+              <v-list-tile-title>统计分析</v-list-tile-title>
+            </v-list-tile>
+          </template>
+          <!-- sub 基于字的分析 -->
+          <v-list-group sub-group no-action>
+            <template v-slot:activator>
+              <v-list-tile>
+                <v-list-tile-title>基于字的分析</v-list-tile-title>
+                <v-list-tile-action><v-icon>code</v-icon></v-list-tile-action>
+              </v-list-tile>
+            </template>
+            <!-- subpage 常用字 -->
+            <v-list-tile to="/statistics/charSummary" router exact>
+              <v-list-tile-title>常用字统计分析</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
+          </v-list-group>
+          <!-- sub 基于词的分析 -->
+          <v-list-group sub-group no-action>
+            <template v-slot:activator>
+              <v-list-tile>
+                <v-list-tile-title>基于词的分析</v-list-tile-title>
+                <v-list-tile-action><v-icon>code</v-icon></v-list-tile-action>
+              </v-list-tile>
+            </template>
+            <!-- subpage 人物影响力 -->
+            <v-list-tile to="/aaa" router exact>
+              <v-list-tile-title>人物影响力</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
+            <!-- subpage 地点影响力 -->
+            <v-list-tile to="/aaa" router exact>
+              <v-list-tile-title>地点影响力</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
+          </v-list-group>
+        </v-list-group>
+        <!-- group 网络分析 -->
+        <v-list-group prepend-icon="language" no-action>
+          <template v-slot:activator>
+            <v-list-tile>
+              <v-list-tile-title>网络分析</v-list-tile-title>
+            </v-list-tile>
+          </template>
+          <!-- page demo -->
+          <v-list-tile to="/aaa" router exact>
+            <v-list-tile-title>demo</v-list-tile-title>
+            <v-list-tile-action
+              ><v-icon>trip_origin</v-icon></v-list-tile-action
+            >
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar :clipped-left="clipped" fixed app>
+
+    <!-- 状态栏 -->
+    <v-toolbar :clipped-left="clipped" color="#1867C0" dark fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>menu</v-icon>
-      </v-btn>
     </v-toolbar>
+
+    <!-- 路由挂载点 -->
     <v-content>
       <v-container>
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2019</span>
+
+    <!-- 底部 -->
+    <v-footer :fixed="false" height="auto">
+      <v-layout justify-center row wrap>
+        <v-flex text-xs-center>
+          <span>Powered by Nuxt.js with Vuetify</span>
+          <br />
+          <span>BUPT - DSSC &copy; 2019 </span>
+        </v-flex>
+      </v-layout>
     </v-footer>
   </v-app>
 </template>
@@ -66,26 +105,30 @@
 export default {
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      title: '古诗词数据挖掘'
     }
   }
 }
 </script>
+
+<style>
+/* scrollbar global */
+::-webkit-scrollbar-track {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.3);
+  background-color: #a8a8a8;
+}
+</style>
