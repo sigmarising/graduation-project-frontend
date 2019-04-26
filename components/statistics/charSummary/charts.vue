@@ -1,5 +1,5 @@
 <template>
-  <div ref="charts" style="height: 75vh"></div>
+  <div ref="charts" style="height: 70vh"></div>
 </template>
 
 <script>
@@ -22,6 +22,18 @@ export default {
           trigger: 'item',
           axisPointer: {
             type: 'cross'
+          },
+          formatter(params) {
+            return (
+              params.name +
+              ' | ' +
+              params.seriesName +
+              ' | 字频：' +
+              params.value.toString().slice(0, 7)
+            )
+          },
+          label: {
+            fontWeight: 'bold'
           }
         },
         legend: {},
@@ -108,6 +120,13 @@ export default {
           smooth: true,
           data: [],
           emphasis: {
+            label: {
+              show: true,
+              fontWeight: 'bold',
+              formatter(params) {
+                return '字频：' + params.value.toString().slice(0, 6)
+              }
+            },
             itemStyle: {
               borderWidth: 5
             }

@@ -40,6 +40,20 @@
                 <v-list-tile-action><v-icon>code</v-icon></v-list-tile-action>
               </v-list-tile>
             </template>
+            <!-- subpage 季节与节气 -->
+            <v-list-tile to="/statistics/season" router exact>
+              <v-list-tile-title>季节/节气分析</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
+            <!-- subpage 意象分析 -->
+            <v-list-tile to="/statistics/imagery" router exact>
+              <v-list-tile-title>意象统计分析</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
             <!-- subpage 人物影响力 -->
             <v-list-tile to="/aaa" router exact>
               <v-list-tile-title>人物影响力</v-list-tile-title>
