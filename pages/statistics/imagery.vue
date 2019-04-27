@@ -1,30 +1,46 @@
 <template>
   <div>
     <!-- 单选按钮 -->
-    <v-layout column align-center justify-center>
-      <v-flex>
-        <div>
-          <p class="headline">朝代选择:</p>
-          <v-radio-group v-model="dynastySelected" row>
-            <v-radio
-              v-for="(dynasty, index) in dynastys"
-              :key="index"
-              :label="dynasty"
-              :value="dynasty"
-            ></v-radio>
-          </v-radio-group>
-        </div>
-      </v-flex>
-    </v-layout>
+    <v-flex class="card">
+      <v-card>
+        <v-layout column align-center justify-center>
+          <v-flex>
+            <v-card-text>
+              <p class="headline">朝代选择:</p>
+              <v-radio-group v-model="dynastySelected" row>
+                <v-radio
+                  v-for="(dynasty, index) in dynastys"
+                  :key="index"
+                  :label="dynasty"
+                  :value="dynasty"
+                ></v-radio>
+              </v-radio-group>
+            </v-card-text>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-flex>
     <!-- echarts -->
     <v-layout row wrap>
-      <v-flex xs12>
-        <p class="title text-xs-left">{{ dynastySelected }} - 意象使用排行:</p>
-        <bar :selected="dynastySelected"></bar>
+      <v-flex class="card" xs12>
+        <v-card>
+          <v-card-title>
+            <p class="title text-xs-left">
+              {{ dynastySelected }} - 意象使用排行:
+            </p>
+          </v-card-title>
+          <bar :selected="dynastySelected"></bar>
+        </v-card>
       </v-flex>
-      <v-flex xs12>
-        <p class="title text-xs-left">{{ dynastySelected }} - 意象词云图:</p>
-        <wc :selected="dynastySelected"></wc>
+      <v-flex class="card" xs12>
+        <v-card>
+          <v-card-title>
+            <p class="title text-xs-left">
+              {{ dynastySelected }} - 意象词云图:
+            </p>
+          </v-card-title>
+          <wc :selected="dynastySelected"></wc>
+        </v-card>
       </v-flex>
     </v-layout>
     <!-- float btn -->
@@ -70,3 +86,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card {
+  padding: 4px;
+}
+</style>

@@ -1,36 +1,53 @@
 <template>
   <div>
-    <v-layout column justify-center align-center>
-      <v-flex xs12 sm8 md6>
-        <!-- 单选按钮 -->
-        <div class="radio">
-          <p class="headline">朝代选择:</p>
-          <v-radio-group v-model="dynastySelected" row>
-            <v-radio
-              v-for="(dynasty, index) in dynastys"
-              :key="index"
-              :label="dynasty"
-              :value="dynasty"
-            ></v-radio>
-          </v-radio-group>
-        </div>
-      </v-flex>
-    </v-layout>
+    <!-- 单选按钮 -->
+    <v-flex class="card">
+      <v-card>
+        <v-layout column align-center justify-center>
+          <v-flex>
+            <v-card-text>
+              <p class="headline">朝代选择:</p>
+              <v-radio-group v-model="dynastySelected" row>
+                <v-radio
+                  v-for="(dynasty, index) in dynastys"
+                  :key="index"
+                  :label="dynasty"
+                  :value="dynasty"
+                ></v-radio>
+              </v-radio-group>
+            </v-card-text>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-flex>
+    <!-- echarts -->
     <v-layout row wrap>
       <!-- 折线趋势图 -->
-      <v-flex xs12>
-        <p class="title">{{ dynastySelected }} - 常用字变化趋势:</p>
-        <charts :selected="dynastySelected"></charts>
+      <v-flex xs12 class="card">
+        <v-card>
+          <v-card-title>
+            <p class="title">{{ dynastySelected }} - 常用字变化趋势:</p>
+          </v-card-title>
+          <charts :selected="dynastySelected"></charts>
+        </v-card>
       </v-flex>
       <!-- 词云显示 -->
-      <v-flex xs12>
-        <p class="title">{{ dynastySelected }} - 常用字词云图:</p>
-        <wc :dynasty-slected="dynastySelected"></wc>
+      <v-flex xs12 class="card">
+        <v-card>
+          <v-card-title>
+            <p class="title">{{ dynastySelected }} - 常用字词云图:</p>
+          </v-card-title>
+          <wc :dynasty-slected="dynastySelected"></wc>
+        </v-card>
       </v-flex>
       <!-- 表格显示 -->
-      <v-flex xs12>
-        <p class="title">{{ dynastySelected }} - 常用字统计表:</p>
-        <Mtable :selected="dynastySelected"></Mtable>
+      <v-flex xs12 class="card">
+        <v-card>
+          <v-card-title>
+            <p class="title">{{ dynastySelected }} - 常用字统计表:</p>
+          </v-card-title>
+          <Mtable :selected="dynastySelected"></Mtable>
+        </v-card>
       </v-flex>
     </v-layout>
     <!-- float btn -->
@@ -68,3 +85,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card {
+  padding: 4px;
+}
+</style>

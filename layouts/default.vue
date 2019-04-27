@@ -31,6 +31,13 @@
                 ><v-icon>bar_chart</v-icon></v-list-tile-action
               >
             </v-list-tile>
+            <!-- subpage 颜色 -->
+            <v-list-tile to="/statistics/color" router exact>
+              <v-list-tile-title>颜色统计分析</v-list-tile-title>
+              <v-list-tile-action
+                ><v-icon>bar_chart</v-icon></v-list-tile-action
+              >
+            </v-list-tile>
           </v-list-group>
           <!-- sub 基于词的分析 -->
           <v-list-group sub-group no-action>
