@@ -1,34 +1,41 @@
 <template>
   <div>
     <v-layout row align-center justify-center wrap>
-      <v-flex xs12 sm8 md12 text-xs-center>
-        <p class="display-3">古诗文数据挖掘</p>
-        <v-divider></v-divider>
+      <v-flex xs12 sm12 md12 text-xs-center class="card">
+        <v-card>
+          <p class="display-3" style="margin: 5px">古诗文数据挖掘</p>
+        </v-card>
       </v-flex>
-      <v-flex xs12 sm8 md12 text-xs-left style="margin-top: 10px">
-        <p class="title">数据集统计展示：</p>
+      <v-flex class="card" xs12 sm12 md12>
+        <v-card>
+          <v-card-title>
+            <p class="title">数据集统计展示：</p>
+          </v-card-title>
+          <v-layout row wrap>
+            <v-flex xs12 md6>
+              <dataCharts
+                title="各朝代诗词数量统计"
+                color="#C23531"
+                :the-data="dataDynasty"
+              >
+              </dataCharts>
+            </v-flex>
+            <v-flex xs12 md6>
+              <dataCharts
+                title="各朝代诗人数量统计"
+                color="#2F4554"
+                :the-data="dataAuthor"
+              >
+              </dataCharts>
+            </v-flex>
+          </v-layout>
+        </v-card>
+        <floatBtn
+          :dialog-title="btnTitle"
+          :dialog-content="btnContent"
+          btn-icon="assessment"
+        ></floatBtn>
       </v-flex>
-      <v-flex xs12 md6>
-        <dataCharts
-          title="各朝代诗词数量统计"
-          color="#C23531"
-          :the-data="dataDynasty"
-        >
-        </dataCharts>
-      </v-flex>
-      <v-flex xs12 md6>
-        <dataCharts
-          title="各朝代诗人数量统计"
-          color="#2F4554"
-          :the-data="dataAuthor"
-        >
-        </dataCharts>
-      </v-flex>
-      <floatBtn
-        :dialog-title="btnTitle"
-        :dialog-content="btnContent"
-        btn-icon="assessment"
-      ></floatBtn>
     </v-layout>
   </div>
 </template>
@@ -99,3 +106,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card {
+  padding: 4px;
+}
+</style>
