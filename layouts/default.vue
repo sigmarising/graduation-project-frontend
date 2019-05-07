@@ -85,14 +85,14 @@
             </v-list-tile>
           </template>
           <!-- subpage 人物关系网络 -->
-          <v-list-tile to="/network/location" router exact>
+          <v-list-tile to="/network/person" router exact>
             <v-list-tile-title>人物关系网络</v-list-tile-title>
             <v-list-tile-action
               ><v-icon>trip_origin</v-icon></v-list-tile-action
             >
           </v-list-tile>
           <!-- subpage 地点关系网络 -->
-          <v-list-tile to="/network/person" router exact>
+          <v-list-tile to="/network/location" router exact>
             <v-list-tile-title>地点关系网络</v-list-tile-title>
             <v-list-tile-action
               ><v-icon>trip_origin</v-icon></v-list-tile-action
