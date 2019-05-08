@@ -6,7 +6,7 @@
         <v-layout column align-center justify-center>
           <v-flex>
             <v-card-text>
-              <p class="headline">朝代选择:</p>
+              <p class="headline" style="margin: 0">朝代选择:</p>
               <v-radio-group v-model="dynastySelected" row>
                 <v-radio
                   v-for="(dynasty, index) in dynastys"

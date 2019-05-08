@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 4px">
-    <div ref="chart" style="height: 90vh"></div>
+    <div ref="chart" style="height: 75vh"></div>
   </div>
 </template>
 
@@ -54,10 +54,10 @@ export default {
             zlevel: 1,
             effect: {
               show: true,
-              period: 6,
-              trailLength: 1,
-              color: '#fff',
-              symbolSize: 3
+              period: 5,
+              trailLength: 0.618,
+              color: '#ffffff',
+              symbolSize: 5
             },
             lineStyle: {
               normal: {
@@ -77,7 +77,7 @@ export default {
               show: true,
               period: 6,
               trailLength: 0,
-              symbol: 'triangle',
+              symbol: 'none',
               symbolSize: 10
             },
             lineStyle: {

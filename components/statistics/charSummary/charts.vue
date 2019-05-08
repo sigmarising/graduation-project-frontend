@@ -29,7 +29,7 @@ export default {
               ' | ' +
               params.seriesName +
               ' | 字频：' +
-              params.value.toString().slice(0, 7)
+              params.value.toFixed(7)
             )
           },
           label: {

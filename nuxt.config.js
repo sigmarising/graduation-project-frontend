@@ -83,6 +83,8 @@ export default {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+        // Use source-map to co-work with debugger in Chrome
+        config.devtool = "#source-map"
       }
     }
   }

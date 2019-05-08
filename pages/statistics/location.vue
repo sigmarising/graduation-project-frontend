@@ -20,70 +20,65 @@
         </v-layout>
       </v-card>
     </v-flex>
-    <!-- echarts 地图 -->
+    <!-- echarts -->
     <v-layout row wrap>
-      <v-flex xs12 class="card">
+      <v-flex class="card" xs12>
         <v-card>
           <v-card-title>
-            <p class="title" style="margin: 0px">
-              {{ dynastySelected }} - 类迁移模拟图：
+            <p class="title text-xs-left" style="margin: 0">
+              {{ dynastySelected }} - 地点影响力：
             </p>
           </v-card-title>
-          <theMap :all="all"></theMap>
+          <theMap :interface="interfaceMap"></theMap>
         </v-card>
       </v-flex>
     </v-layout>
+    <!-- float btn -->
+    <floatBtn :dialog-title="dialogTitle" :dialog-content="dialogContent">
+    </floatBtn>
   </div>
 </template>
 
 <script>
-import theMap from '@/components/network/location/map.vue'
+import floatBtn from '@/components/floatBtn.vue'
+import theMap from '@/components/statistics/location/map.vue'
 import axios from 'axios'
 
 export default {
   components: {
+    floatBtn,
     theMap
   },
   data() {
     return {
       dynastySelected: '',
-      dynastys: this.$store.state.poetry.dynastys.slice(0, -1),
-      color: [
-        '#e01f54',
-        '#27727b',
-        '#fcce10',
-        '#e87c25',
-        '#b5c334',
-        '#fe8463',
-        '#9bca63',
-        '#fad860',
-        '#f3a43b',
-        '#60c0dd',
-        '#c6e579',
-        '#f4e001'
-      ],
-      all: {
-        color: '',
-        nodes: [],
-        edges: []
+      dynastys: this.$store.state.poetry.dynastys,
+      interfaceMap: {
+        data: [],
+        dynasty: ''
       }
     }
   },
   watch: {
-    dynastySelected(newVal) {
-      this.all.nodes = this.raw.nodes
-      this.all.edges = this.raw.edges
-      this.all.color = this.color[this.dynastys.indexOf(newVal)]
+    dynastySelected(newDynasty) {
+      this.updateData(newDynasty)
     }
   },
   async asyncData() {
-    const { data } = await axios.get('/api/v1/locationNetwork')
+    const { data } = await axios.get('/api/v1/impactLocation')
     return {
-      raw: data
+      allData: data
     }
   },
   created() {
     this.dynastySelected = '先秦'
+  },
+  methods: {
+    updateData(dynasty) {
+      this.interfaceMap.data = []
+      this.interfaceMap.data = this.allData[dynasty]
+      this.interfaceMap.dynasty = dynasty
+    }
   }
 }
 </script>
