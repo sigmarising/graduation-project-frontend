@@ -41,6 +41,7 @@ export default {
         tooltip: {},
         legend: {},
         animationDuration: 1500,
+        animationDurationUpdate: 1500,
         animationEasingUpdate: 'quinticInOut',
         series: [
           {

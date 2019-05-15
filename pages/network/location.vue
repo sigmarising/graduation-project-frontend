@@ -71,8 +71,8 @@ export default {
   },
   watch: {
     dynastySelected(newVal) {
-      this.all.nodes = this.raw.nodes
-      this.all.edges = this.raw.edges
+      this.all.nodes = this.raw[newVal].nodes
+      this.all.edges = this.raw[newVal].edges
       this.all.color = this.color[this.dynastys.indexOf(newVal)]
     }
   },
@@ -83,7 +83,7 @@ export default {
     }
   },
   created() {
-    this.dynastySelected = '先秦'
+    this.dynastySelected = '唐'
   }
 }
 </script>

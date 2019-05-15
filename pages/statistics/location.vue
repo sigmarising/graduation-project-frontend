@@ -56,7 +56,10 @@ export default {
       interfaceMap: {
         data: [],
         dynasty: ''
-      }
+      },
+      dialogTitle: '地点影响力',
+      dialogContent: `对原始数据集运行 Lattice LSTM 模型进行 NER，将其中所有诗人提
+      及到的地点进行统计，并排名，得出了统计学意义上的地点影响力排名`
     }
   },
   watch: {

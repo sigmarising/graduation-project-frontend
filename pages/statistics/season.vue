@@ -102,10 +102,9 @@ export default {
         solarTerm: null
       },
       allData: {},
-      dialogTitle: '处理方法',
-      dialogContent: `对于原始数据集，依据朝代的不同，分别统计常用字 Top100 排名，
-      并依次获取每个朝代的常用字在其他朝代的使用情况。
-      其中处理数据时，去掉了一些虚词、语气词、标点。`
+      dialogTitle: '节气与季节统计',
+      dialogContent: `对数据集中出现的季节、节气进行统计，并进行了占比分析。结果中包含了对四季用字的统计，以及各个
+      季节的节气的统计`
     }
   },
   watch: {

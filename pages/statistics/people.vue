@@ -75,10 +75,9 @@ export default {
         data: [],
         dynasty: ''
       },
-      dialogTitle: '处理方法',
-      dialogContent: `对于原始数据集，依据朝代的不同，分别统计常用字 Top100 排名，
-      并依次获取每个朝代的常用字在其他朝代的使用情况。
-      其中处理数据时，去掉了一些虚词、语气词、标点。`
+      dialogTitle: '人物影响力',
+      dialogContent: `对原始数据集运行 Lattice LSTM 模型进行 NER，将其中所有诗人提
+      及到的人物进行统计，并排名，得出了统计学意义上的人物影响力排名`
     }
   },
   watch: {

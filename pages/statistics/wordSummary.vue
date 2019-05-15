@@ -27,7 +27,7 @@
         <v-card>
           <v-card-title>
             <p class="title" style="margin">
-              {{ dynastySelected }} - 常用词 Top 20 排行
+              {{ dynastySelected }} - 常用词 词频 Top 20 排行
             </p>
           </v-card-title>
           <!-- charts -->
@@ -39,7 +39,7 @@
         <v-card>
           <v-card-title>
             <p class="title" style="margin">
-              {{ dynastySelected }} - 常用词趋势
+              {{ dynastySelected }} - 常用词 词频 趋势
             </p>
           </v-card-title>
           <!-- charts -->
@@ -98,10 +98,9 @@ export default {
         data: [],
         dynasty: ''
       },
-      dialogTitle: '处理方法',
-      dialogContent: `对于原始数据集，依据朝代的不同，分别统计常用字 Top100 排名，
-      并依次获取每个朝代的常用字在其他朝代的使用情况。
-      其中处理数据时，去掉了一些虚词、语气词、标点。`
+      dialogTitle: '常用词统计',
+      dialogContent: `对于原始数据集，使用 CRF++ 进行了分词处理，并进行了词频统计，
+      给出了对应朝代的常用词随着历史变化的词频变化趋势。`
     }
   },
   computed: {

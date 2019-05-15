@@ -66,10 +66,8 @@ export default {
       dynastys: this.$store.state.poetry.dynastys,
       imagerys: this.$store.state.poetry.imagery,
       rawImagerys: null,
-      dialogTitle: '处理方法',
-      dialogContent: `对于原始数据集，依据朝代的不同，分别统计常用字 Top100 排名，
-      并依次获取每个朝代的常用字在其他朝代的使用情况。
-      其中处理数据时，去掉了一些虚词、语气词、标点。`
+      dialogTitle: '意象统计',
+      dialogContent: `首先收录了常见意象词50个以上，并对各个朝代出现的意象进行了分析与对比排名`
     }
   },
   created() {

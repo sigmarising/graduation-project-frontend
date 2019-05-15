@@ -40,6 +40,7 @@
 <script>
 import floatBtn from '@/components/floatBtn.vue'
 import graph from '@/components/network/person/graph.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -51,10 +52,6 @@ export default {
     return {
       dynastys: this.$store.state.poetry.dynastys,
       categories: null,
-      nodesCircular: null,
-      nodesForce: null,
-      edgesCircular: null,
-      edgesForce: null,
       dialogTitle: '处理方法',
       dialogContent: `对于原始数据集，依据朝代的不同，分别统计常用字 Top100 排名，
       并依次获取每个朝代的常用字在其他朝代的使用情况。
@@ -62,9 +59,18 @@ export default {
     }
   },
   watch: {},
+  async asyncData() {
+    const { data } = await axios.get('/api/v1/personNetwork')
+    return {
+      nodesCircular: data.nodes,
+      edgesCircular: data.edges,
+      nodesForce: data.nodes,
+      edgesForce: data.edges
+    }
+  },
   created() {
     const _this = this
-    _this.initData()
+
     _this.categories = []
     const arr = _this.dynastys.slice(0, -1)
     const color = [
@@ -89,18 +95,7 @@ export default {
   },
   mounted() {},
   destroyed() {},
-  methods: {
-    initData: async function() {
-      const _this = this
-      const res = await _this.$axios.get('/api/v1/personNetwork')
-      const rawData = res.data
-
-      _this.nodesCircular = rawData.nodes
-      _this.nodesForce = rawData.nodes
-      _this.edgesCircular = rawData.edges
-      _this.edgesForce = rawData.edges
-    }
-  }
+  methods: {}
 }
 </script>
 
