@@ -105,6 +105,13 @@
               ><v-icon>trip_origin</v-icon></v-list-tile-action
             >
           </v-list-tile>
+          <!-- subpage 地点关系网络 -->
+          <v-list-tile to="/network/route" router exact>
+            <v-list-tile-title>人物轨迹模拟</v-list-tile-title>
+            <v-list-tile-action
+              ><v-icon>trip_origin</v-icon></v-list-tile-action
+            >
+          </v-list-tile>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
