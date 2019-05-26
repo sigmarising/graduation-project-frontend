@@ -2,6 +2,8 @@
 
 > The frontend of my graduation project
 
+Store the rubbish code with Memory-leak of guaduation-project
+
 ## Build Setup
 
 ``` bash
