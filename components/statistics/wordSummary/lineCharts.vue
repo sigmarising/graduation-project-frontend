@@ -93,6 +93,7 @@ export default {
   },
   destroyed() {
     window.addEventListener('resize', this.resizeHandler)
+    this.chart.dispose()
   },
   methods: {
     resizeHandler() {

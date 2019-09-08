@@ -91,6 +91,7 @@ export default {
   destroyed() {
     const _this = this
     window.removeEventListener('resize', _this.resizeHandler)
+    this.chart.dispose()
   },
   methods: {
     resizeHandler() {

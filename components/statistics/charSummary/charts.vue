@@ -99,6 +99,7 @@ export default {
   },
   destroyed() {
     window.removeEventListener('resize', this.resizeHandler)
+    this.chart.dispose()
   },
   methods: {
     flushData(newStr) {
