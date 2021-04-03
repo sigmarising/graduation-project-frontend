@@ -4,10 +4,14 @@
     <!-- 导航栏 -->
     <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list>
-        <!-- 主页 -->
-        <v-list-tile to="/" router exact>
+        <v-list-tile href="http://localhost:8000" router exact>
           <v-list-tile-action><v-icon>home</v-icon></v-list-tile-action>
           <v-list-tile-title>主页</v-list-tile-title>
+        </v-list-tile>
+        <!-- 主页 -->
+        <v-list-tile to="/" router exact>
+          <v-list-tile-action><v-icon>flag</v-icon></v-list-tile-action>
+          <v-list-tile-title>数据集说明</v-list-tile-title>
         </v-list-tile>
         <!-- group 统计分析 -->
         <v-list-group prepend-icon="assignment" no-action>
