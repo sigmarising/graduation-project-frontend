@@ -138,9 +138,7 @@
     <v-footer :fixed="false" height="auto">
       <v-layout justify-center row wrap>
         <v-flex text-xs-center>
-          <span>Powered by Nuxt.js with Vuetify</span>
-          <br />
-          <span>BUPT - DSSC &copy; 2019 </span>
+          <span>2021 GeLai Poetry Big Data Visualization System</span>
         </v-flex>
       </v-layout>
     </v-footer>
